@@ -111,6 +111,15 @@ Example:
 - Twitter: [@EchchafykyO](https://twitter.com/EchchafykyO)
 - LinkedIn: [otmane-echchafyky](https://www.linkedin.com/in/otmane-echchafyky-125801248/)
 
+
+👤 **Luis Zubia**
+
+- GitHub: [@luigirazum](https://github.com/luigirazum)
+- Twitter: [@LuigiRazum](https://twitter.com/luigirazum)
+- LinkedIn: [Luis Zubia](https://www.linkedin.com/in/luiszubia/)
+
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
