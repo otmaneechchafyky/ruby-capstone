@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def list_all_books
   puts 'List of books'
 end
