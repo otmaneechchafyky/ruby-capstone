@@ -16,6 +16,22 @@ class Item
     @archived = params[:archived] || false
   end
 
+  def add_genre(genre)
+    @genre = genre
+  end
+
+  def add_author(author)
+    @author = author
+  end
+
+  def add_source(source)
+    @source = source
+  end
+
+  def add_label(label)
+    @label = label
+  end
+
   def move_to_archive
     @archived = true if can_be_archived?
   end
