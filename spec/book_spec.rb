@@ -1,4 +1,4 @@
-require_relative '../book'
+require_relative '../classes/book'
 
 describe Book do
   describe 'can_be_archived? method' do
@@ -16,7 +16,7 @@ describe Book do
       it 'returns false' do
         book = Book.new(
           'Mystery', 'Jane Smith', 'Bookstore',
-          'New Book', '2023-08-10', false, 'Publisher', 'good'
+          'New Book', '2023-08-10', false, 'Publisher', 'Not bad'
         )
         expect(book.send(:can_be_archived?)).to eq(false)
       end
@@ -26,7 +26,7 @@ describe Book do
       it 'returns true' do
         book = Book.new(
           'Mystery', 'Jane Smith', 'Bookstore',
-          'New Book', '2010-01-01', false, 'Publisher', 'good'
+          'New Book', '2010-01-01', false, 'Publisher', 'Not bad'
         )
         expect(book.send(:can_be_archived?)).to eq(true)
       end
