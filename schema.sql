@@ -1,0 +1,1 @@
+--Create a schema.sql file with tables that will be analogical to the structure of the classes that you created:
