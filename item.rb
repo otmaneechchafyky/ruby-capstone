@@ -14,6 +14,10 @@ class Item
     super()
   end
 
+  def can_be_archived?
+    false
+  end
+
   def add_related_items(item)
     @related_items << item
   end
