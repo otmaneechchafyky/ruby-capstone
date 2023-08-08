@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # item unit test
 require_relative '../item'
 
