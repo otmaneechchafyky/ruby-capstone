@@ -1,46 +1,4 @@
-def list_all_books
-  puts 'List of books'
-end
-
-def list_all_music_albums
-  puts 'List of music albums'
-end
-
-def list_all_movies
-  puts 'List of movies'
-end
-
-def list_all_games
-  puts 'List of games'
-end
-
-def list_all_genres
-  puts 'List of genres'
-end
-
-def list_all_labels
-  puts 'List of labels'
-end
-
-def list_all_authors
-  puts 'List of authors'
-end
-
-def list_all_sources
-  puts 'List of sources'
-end
-
-def add_a_book
-  puts 'Add a new book'
-end
-
-def add_a_music_album
-  puts 'Add a new music album'
-end
-
-def add_a_game
-  puts 'Add a new game'
-end
+require_relative 'app'
 
 def list_options
   list = "
@@ -64,32 +22,13 @@ end
 
 def main
   puts 'Welcome to Catalog manager App!'
+  cm_app = App.new
   loop do
     number = list_options
 
     case number
-    when '1'
-      list_all_books
-    when '2'
-      list_all_music_albums
-    when '3'
-      list_all_movies
-    when '4'
-      list_all_games
-    when '5'
-      list_all_genres
-    when '6'
-      list_all_labels
-    when '7'
-      list_all_authors
-    when '8'
-      list_all_sources
-    when '9'
-      add_a_book
-    when '10'
-      add_a_music_album
-    when '11'
-      add_a_game
+    when '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'
+      cm_app.run(number)
     when '12'
       puts 'Thank you for using this app!'
       break
