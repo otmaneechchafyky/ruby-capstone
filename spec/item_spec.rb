@@ -1,5 +1,5 @@
 # item unit test
-require_relative '../item'
+require_relative '../classes/item'
 
 describe Item do
   before(:each) do
