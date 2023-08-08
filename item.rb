@@ -1,5 +1,5 @@
 class Item
-  attr_accessor :id, :genre, :author, :source, :label, :publish_date, :archieved
+  attr_accessor :id, :genre, :author, :source, :label, :publish_date, :archived
   attr_reader :related_items
 
   def initialize(params)
