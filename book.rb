@@ -3,9 +3,8 @@ require_relative 'item'
 class Book < Item
   attr_accessor :publisher, :cover_state
 
-  def initialize(id, genre, author, source, label, publish_date, archived, publisher, cover_state)
+  def initialize(genre, author, source, label, publish_date, archived, publisher, cover_state)
     super(
-      id: id,
       genre: genre,
       author: author,
       source: source,
@@ -25,3 +24,5 @@ class Book < Item
     false
   end
 end
+book = Book.new('Math', 'Otmane', 'Morocco', 'labeltest', '2022-12-12', true, 'publisher', 'Not bad')
+puts book.inspect
