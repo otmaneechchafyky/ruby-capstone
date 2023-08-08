@@ -24,5 +24,3 @@ class Book < Item
     false
   end
 end
-book = Book.new('Math', 'Otmane', 'Morocco', 'labeltest', '2022-12-12', true, 'publisher', 'Not bad')
-puts book.inspect

@@ -8,4 +8,9 @@ class Label
     @title = title
     @color = color
   end
+
+  def add_item(item)
+    items << item
+    item.label = self
+  end
 end

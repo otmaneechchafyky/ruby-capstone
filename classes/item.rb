@@ -28,6 +28,7 @@ class Item
 
   def add_label(label)
     @label = label
+    label.add_item(self)
   end
 
   def move_to_archive
