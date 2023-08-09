@@ -89,9 +89,17 @@ class App
     puts 'Add book cover state'
     cover_state = gets.chomp
 
-    book = Book.new(
-      genre, author, source, label, publish_date, archived, publisher, cover_state
-    )
+    params = {
+      genre: genre,
+      author: author,
+      source: source,
+      label: label,
+      publish_date: publish_date,
+      archived: archived,
+      publisher: publisher,
+      cover_state: cover_state
+    }
+    book = Book.new(params)
     colorized_label = Label.new(label)
     @books << book
     @labels << colorized_label
