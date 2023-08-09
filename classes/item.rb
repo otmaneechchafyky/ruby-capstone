@@ -5,7 +5,7 @@ class Item
   attr_reader :related_items
 
   def initialize(params)
-    @id = params[:id]
+    @id = params[:id] || rand(1..10_000)
     @genre = params[:genre]
     @author = params[:author]
     @source = params[:source]
