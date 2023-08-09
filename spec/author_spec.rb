@@ -1,4 +1,5 @@
 require_relative '../game/author'
+require_relative '../item'
 require 'rspec'
 require 'rspec/mocks'
 
