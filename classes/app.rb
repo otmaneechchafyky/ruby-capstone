@@ -3,7 +3,7 @@ require_relative 'label'
 
 class App
   attr_accessor :books, :labels
-  
+
   def initialize()
     @books = []
     @labels = []
@@ -72,7 +72,6 @@ class App
   end
 
   def add_a_book
-
     puts 'Add book genre'
     genre = gets.chomp
     puts 'Add book author'
@@ -91,8 +90,8 @@ class App
     cover_state = gets.chomp
 
     book = Book.new(
-    genre, author, source, label, publish_date, archived, publisher, cover_state
-  )
+      genre, author, source, label, publish_date, archived, publisher, cover_state
+    )
     colorized_label = Label.new(label)
     @books << book
     @labels << colorized_label
