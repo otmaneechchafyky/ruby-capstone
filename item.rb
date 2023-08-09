@@ -43,6 +43,8 @@ class Item
   end
 
   def create_date(date_str)
+    return nil if date_str.nil?
+
     Date.parse(date_str)
   end
 end

@@ -1,4 +1,10 @@
+require_relative 'game/gameapp'
 class App
+  def initialize
+    @gameapp = GameApp.new
+    @gameapp.load_authors
+    @gameapp.load_games
+  end
   OPTIONS = {
     '1' => :list_all_books,
     '2' => :list_all_music_albums,
@@ -30,7 +36,7 @@ class App
   end
 
   def list_all_games
-    puts 'List of games'
+    @gameapp.list_all_games
   end
 
   def list_all_genres
@@ -42,7 +48,7 @@ class App
   end
 
   def list_all_authors
-    puts 'List of authors'
+    @gameapp.list_all_authors
   end
 
   def list_all_sources
@@ -58,6 +64,7 @@ class App
   end
 
   def add_a_game
-    puts 'Add a new game'
+    @gameapp.add_game_and_associate_with_author
+    @gameapp.add_game
   end
 end
