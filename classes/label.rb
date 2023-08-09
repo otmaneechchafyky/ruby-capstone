@@ -2,11 +2,11 @@ class Label
   attr_accessor :title, :color
   attr_reader :id, :items
 
-  def initialize(title, color)
+  def initialize(title)
     @id = rand(1..100_000)
     @items = []
     @title = title
-    @color = color
+    @color = 'green'
   end
 
   def add_item(item)

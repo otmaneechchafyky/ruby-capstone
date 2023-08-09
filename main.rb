@@ -2,20 +2,20 @@ require_relative 'classes/app'
 
 def list_options
   list = "
-    Please choose an option by entering a number (1-12):
-    1 - List all books
-    2 - List all music albums
-    3 - List all movies
-    4 - List all games
-    5 - List all genres
-    6 - List all labels
-    7 - List all authors
-    8 - List all sources
-    9 - Add a new book
-    10 - Add a new music album
-    11 - Add a new game
-    12 - Exit
-    "
+Please choose an option by entering a number (1-12):
+1 - List all books
+2 - List all music albums
+3 - List all movies
+4 - List all games
+5 - List all genres
+6 - List all labels
+7 - List all authors
+8 - List all sources
+9 - Add a new book
+10 - Add a new music album
+11 - Add a new game
+12 - Exit
+"
   puts list
   gets.chomp
 end
