@@ -21,8 +21,8 @@ describe Genre do
       @genre_instance = instance_double(Genre)
     end
 
-    context 'when creating a new Genre' do
-      it 'should create an instance of Genre' do
+    context 'when creating a new \'Genre\'' do
+      it 'should create an instance of \'Genre\'' do
         expect(@new_genre).to be_an_instance_of Genre
       end
 
@@ -38,17 +38,17 @@ describe Genre do
     end
 
     context '#add-item method' do
-      it 'should receive an Item instance as input' do
+      it 'should receive an \'Item\' instance as input' do
         allow(@genre_instance).to receive(:add_item).with(instance_of(Item)).exactly(1)
         @genre_instance.add_item(@new_item)
       end
 
-      it 'should add the input Item to the collection of \'items\'' do
+      it 'should add the input \'Item\' to the collection of \'items\'' do
         @new_genre.add_item(@new_item)
         expect(@new_genre.items.include?(@new_item)).to be_truthy
       end
 
-      it 'should add self as a property of the Item object' do
+      it 'should add \'self\' as a property of the \'Item\' object' do
         @new_genre.add_item(@new_item)
         expect(@new_item.genre).to eql @new_genre
       end
