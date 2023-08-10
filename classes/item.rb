@@ -1,8 +1,8 @@
 require 'date'
-require_relative '../modules/data_handler'
+require_relative '../modules/user_interface'
 
 class Item
-  include DataHandler
+  include UserInterface
 
   attr_accessor :id, :genre, :author, :source, :label, :publish_date, :archived
   attr_reader :related_items
@@ -38,16 +38,27 @@ class Item
   end
 
   def to_s
-    to_print = [
+    [
       "id: #{@id}",
       "genre: #{@genre&.name}",
-      "author: #{@author}",
-      "source: #{@source}",
-      "label: #{@label}",
+      "author: #{@author&.first_name} #{@author&.last_name}",
+      "source: #{@source&.name}",
+      "label: #{@label&.title}",
       "publish date: #{@publish_date}",
       "archived: #{yes_no(@archived)}"
-    ]
-    to_print.join(' | ')
+    ].join(' | ')
+  end
+
+  def to_hash(*_args)
+    {
+      id: @id,
+      genre_id: @genre&.id,
+      author_id: @author&.id,
+      source_id: @source&.id,
+      label_id: @label&.id,
+      publish_date: @publish_date,
+      archived: @archived
+    }
   end
 
   private
