@@ -9,10 +9,10 @@ RSpec.describe Game do
 
   it "associates with an author and adds the game to author's items" do
     game = Game.new({ multiplayer: true, played_at_date: Date.today })
-    game.associate_with_author(author)
+    author.add_item(game)
 
-    expect(game.authors).to include(author)
     expect(author.items).to include(game)
+    expect(game.author).to eq(author)
   end
 
   it 'cannot be archived if it doesn\'t meet the conditions' do

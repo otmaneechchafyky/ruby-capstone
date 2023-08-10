@@ -1,5 +1,4 @@
 require_relative '../classes/author'
-require_relative '../item'
 require 'rspec'
 require 'rspec/mocks'
 
