@@ -1,11 +1,13 @@
 require_relative 'collection'
 require_relative '../../classes/genre'
-require_relative '../../modules/data_handler'
+require_relative '../../modules/user_interface'
 
 class Genres < Collection
-  include DataHandler
+  include UserInterface
 
   def initialize(params = {})
+    params[:filename] ||= "#{self.class.name.downcase}.json"
+    params[:obj] ||= Genre
     super(params)
   end
 
@@ -26,12 +28,14 @@ class Genres < Collection
   end
 
   def list_all
-    return say_nothing_to_list('Genres') if empty?
-
-    print_title('List all Genres')
-    puts "#{'id'.ljust(10)} | #{'Name'.ljust(25)}"
-    print_line
-    super
+    super do
+      puts [
+        'id'.ljust(10).to_s,
+        'Name'.ljust(25).to_s,
+        'Total Items'.ljust(10).to_s
+      ].join(' | ')
+      print_line({ char: '-', num: 100 })
+    end
   end
 
   private
