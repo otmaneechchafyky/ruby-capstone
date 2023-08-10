@@ -1,3 +1,4 @@
+require 'json'
 require_relative 'item'
 
 class MusicAlbum < Item
@@ -9,7 +10,25 @@ class MusicAlbum < Item
   end
 
   def to_s
-    "#{super} | On Spotify: #{yes_no(@on_spotify)}"
+    [
+      super.to_s,
+      "On Spotify: #{yes_no(@on_spotify)}"
+    ].join(' | ')
+  end
+
+  def to_hash(*args)
+    super.merge({
+                  on_spotify: @on_spotify
+                })
+  end
+
+  def to_json(*_args)
+    JSON.dump(to_hash)
+  end
+
+  def self.from_json(json)
+    parsed = JSON.parse(json)
+    parsed.to_h { |k, v| [k.to_sym, v] }
   end
 
   private
