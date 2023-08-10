@@ -1,31 +1,54 @@
 require_relative 'collection'
+require_relative '../../classes/genre'
+# require_relative '../../classes/author'
+# require_relative '../../classes/source'
+# require_relative '../../classes/label'
 require_relative '../../classes/music_album'
-require_relative '../../modules/data_handler'
+require_relative '../../modules/user_interface'
 
 class MusicAlbums < Collection
-  include DataHandler
+  include UserInterface
 
-  def initialize(params = {})
+  def initialize(params = { dependencies: { genres: nil, authors: nil, sources: nil, labels: nil } })
+    params[:filename] ||= "#{self.class.name.downcase}.json"
+    params[:obj] ||= MusicAlbum
     super(params)
   end
 
   def create_new(params)
-    params.merge!(create_params)
+    return say_missing('genre', 'MusicAlbum') unless params[:genre]
+
     say_creating('MusicAlbum')
-    music_album = MusicAlbum.new(params)
-    @collection << music_album
+    new_album = MusicAlbum.new(create_params)
+    @collection << new_album
+    params[:genre].add_item(new_album)
     say_created('MusicAlbum')
-    music_album
+    new_album
   end
 
-  def list_all
-    return say_nothing_to_list('MusicAlbums') if empty?
+  def load(params = {})
+    super do
+      hash_elem = @obj.from_json(params[:json])
+      album = @obj.new(hash_elem)
 
-    print_title('List all MusicAlbums')
-    super
+      instances = %i[genre author source label]
+
+      instances.each do |instance|
+        dependecy = "#{instance}s".to_sym
+        obj_id = "#{instance}_id".to_sym
+        obj = look_for(hash_elem[obj_id], params[dependecy])
+        obj&.add_item(album)
+      end
+
+      album
+    end
   end
 
   private
+
+  def look_for(elem_id, dependecy)
+    dependecy&.select_by({ id: elem_id })
+  end
 
   def create_params
     {
