@@ -30,6 +30,7 @@ def main
     when '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'
       cm_app.run(number)
     when '12'
+      cm_app.save
       puts 'Thank you for using this app!'
       break
     else
