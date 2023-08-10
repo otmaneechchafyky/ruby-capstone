@@ -1,15 +1,15 @@
-require_relative '../game/author'
+require_relative '../classes/author'
 require_relative '../item'
 require 'rspec'
 require 'rspec/mocks'
 
 RSpec.describe Author do
   let(:item) { double('item') }
-  subject { Author.new('John', 'Doe') }
+  subject { Author.new(first_name: 'John', last_name: 'Doe') }
   it "adds an item to the author's items" do
     initial_items = subject.items.dup
 
-    allow(item).to receive(:author=)
+    allow(item).to receive(:add_author)
     allow(subject).to receive(:add_item).and_call_original
 
     subject.add_item(item)
@@ -25,7 +25,7 @@ RSpec.describe Author do
     expect(subject.items).to be_empty
   end
   it 'does not add the same item to the items array' do
-    allow(item).to receive(:author=)
+    allow(item).to receive(:add_author)
     subject.add_item(item)
     subject.add_item(item)
     expect(subject.items).to contain_exactly(item)

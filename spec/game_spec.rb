@@ -1,30 +1,36 @@
-require_relative '../game/game'
-require_relative '../game/author'
+require_relative '../classes/game'
+require_relative '../classes/author'
 require 'rspec'
 require 'date'
 
 RSpec.describe Game do
-  let(:author) { Author.new('John', 'Doe') }
+  let(:author) { Author.new(first_name: 'John', last_name: 'Doe') }
+  let(:game) { Game.new(multiplayer: true, played_at_date: Date.today) }
 
   it "associates with an author and adds the game to author's items" do
-    game = Game.new(true, Date.today, {})
+    game = Game.new({ multiplayer: true, played_at_date: Date.today })
     game.associate_with_author(author)
 
     expect(game.authors).to include(author)
     expect(author.items).to include(game)
   end
 
-  it "cannot be archived if it doesn't meet the conditions" do
-    played_at_date = Date.parse('2022-01-01')
-    game = Game.new(false, played_at_date, {})
+  it 'cannot be archived if it doesn\'t meet the conditions' do
+    allow(Date).to receive(:today).and_return(Date.new(2023, 8, 10))
 
-    allow(Date).to receive(:today).and_return(Date.parse('2023-01-01'))
+    game = Game.new({
+                      multiplayer: true,
+                      played_at_date: Date.new(2022, 1, 1),
+                      publish_date: Date.new(2022, 1, 1) # Use Date object here
+                    })
 
-    expect(game.can_be_archived?).to be(false)
+    game.move_to_archive
+
+    expect(game.archived).to be(false)
   end
 
   it 'returns a hash representation of the game' do
-    game = Game.new(true, Date.parse('2021-01-01'), {})
+    game = Game.new({ multiplayer: true, played_at_date: Date.parse('2021-01-01') })
 
     expected_hash = {
       multiplayer: true,

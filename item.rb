@@ -5,7 +5,7 @@ class Item
   attr_reader :related_items
 
   def initialize(params)
-    @id = params[:id]
+    @id = params[:id] || rand(1..1000)
     @genre = params[:genre]
     @author = params[:author]
     @source = params[:source]
@@ -45,6 +45,6 @@ class Item
   def create_date(date_str)
     return nil if date_str.nil?
 
-    Date.parse(date_str)
+    Date.parse(date_str.to_s)
   end
 end

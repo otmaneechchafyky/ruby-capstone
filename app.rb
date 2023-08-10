@@ -1,4 +1,4 @@
-require_relative 'game/gameapp'
+require_relative 'classes/gameapp'
 class App
   def initialize
     @gameapp = GameApp.new
