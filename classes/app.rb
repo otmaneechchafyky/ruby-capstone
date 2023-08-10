@@ -1,7 +1,8 @@
 require_relative 'book'
 require_relative 'label'
 require_relative '../preserve_data/save_books_labels'
-require_relative 'classes/gameapp'
+require_relative 'gameapp'
+
 class App
   attr_accessor :books, :labels
 
@@ -51,7 +52,7 @@ class App
   end
 
   def list_all_games
-    @gameapp.list_all_games
+    @gameapp.list_all_games(@games)
   end
 
   def list_all_genres
@@ -127,7 +128,9 @@ class App
 
   def add_a_game
     author = @gameapp.add_author(@authors)
-    game = @gameapp.add_game
+    game = @gameapp.add_game(@games)
     author.add_item(game)
+    @gameapp.save_authors(@authors)
+    @gameapp.save_games(@games)
   end
 end
