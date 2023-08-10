@@ -1,11 +1,13 @@
 require_relative 'book'
 require_relative 'label'
+require_relative '../preserve_data/save_books_labels'
 
 class App
   attr_accessor :books, :labels
 
   def initialize()
-    @books = []
+    @save = Save.new
+    @books = @save.read_books
     @labels = []
   end
 
@@ -58,7 +60,7 @@ class App
       puts 'There are no labels yet..'
     else
       @labels.each do |label|
-        print "'#{label.title}', "
+        puts "Label title: #{label.title} | Color: #{label.color}"
       end
     end
   end
@@ -80,14 +82,20 @@ class App
     source = gets.chomp
     puts 'Add book label'
     label = gets.chomp
-    puts 'Add book publish date'
+    puts 'Add book publish date [Format (YYYY/MM/DD)]'
     publish_date = gets.chomp
-    puts 'Add book archived'
+    puts 'archive the book (Y/N)'
     archived = gets.chomp
     puts 'Add book publisher'
     publisher = gets.chomp
     puts 'Add book cover state'
     cover_state = gets.chomp
+
+    if %w[Y y].include?(archived)
+      archived_value = true
+    elsif %w[N n].include?(archived)
+      archived_value = false
+    end
 
     params = {
       genre: genre,
@@ -95,14 +103,18 @@ class App
       source: source,
       label: label,
       publish_date: publish_date,
-      archived: archived,
+      archived: archived_value,
       publisher: publisher,
       cover_state: cover_state
     }
     book = Book.new(params)
-    colorized_label = Label.new(label)
+    puts 'Add a label color:'
+    color = gets.chomp
+    colorized_label = Label.new(label, color)
     @books << book
     @labels << colorized_label
+    @save.save_books(@books)
+    puts 'Book created successfully'
   end
 
   def add_a_music_album
