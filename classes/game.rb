@@ -1,5 +1,6 @@
-require_relative '../item'
+require_relative 'item'
 require 'date'
+
 class Game < Item
   attr_accessor :multiplayer, :played_at_date
   attr_reader :authors
@@ -8,14 +9,6 @@ class Game < Item
     super(params)
     @multiplayer = params[:multiplayer]
     @played_at_date = params[:played_at_date]
-    @can_be_archived = params[:can_be_archived] || false
-    @publish_date = create_date(params[:publish_date])
-    @authors = []
-  end
-
-  def associate_with_author(author)
-    author.add_item(self)
-    @authors = [author]
   end
 
   def to_hash
