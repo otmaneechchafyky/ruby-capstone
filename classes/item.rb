@@ -4,11 +4,11 @@ require_relative '../modules/user_interface'
 class Item
   include UserInterface
 
-  attr_accessor :id, :genre, :author, :source, :label, :publish_date, :archived
-  attr_reader :related_items
+  attr_accessor :publish_date
+  attr_reader :id, :archived, :genre, :author, :source, :label
 
   def initialize(params)
-    @id = params[:id] || rand(1..10_000)
+    @id = params[:id] || rand(1..100_000)
     @genre = params[:genre]
     @author = params[:author]
     @source = params[:source]
@@ -31,6 +31,7 @@ class Item
 
   def add_label(label)
     @label = label
+    label.add_item(self)
   end
 
   def move_to_archive
@@ -70,6 +71,8 @@ class Item
   end
 
   def create_date(date_str)
-    Date.parse(date_str)
+    return nil if date_str.nil?
+
+    Date.parse(date_str.to_s)
   end
 end

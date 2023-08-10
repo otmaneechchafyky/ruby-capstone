@@ -19,6 +19,13 @@ module UserInterface
     pause_by(0.5)
   end
 
+  def say_invalid(type)
+    puts "\n"
+    puts "🛑 Invalid [#{type}], choose a valid one."
+    pause_by(0.5)
+    false
+  end
+
   def say_missing(elem, type)
     puts "\n"
     puts "🛑 Missing <#{elem}> to create a [#{type}]."

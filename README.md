@@ -118,7 +118,11 @@ Example:
 - Twitter: [@LuigiRazum](https://twitter.com/luigirazum)
 - LinkedIn: [Luis Zubia](https://www.linkedin.com/in/luiszubia/)
 
+👤 **Binod Bhusal**
 
+- GitHub: [@githubhandle](https://github.com/binodbhusal)
+- Twitter: [@twitterhandle](https://twitter.com/Binod_ironLad)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/binodbhusal)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
