@@ -1,6 +1,6 @@
 require_relative 'book'
 require_relative 'label'
-require_relative '../preserve_data/save_books_labels'
+require_relative '../preserve_data/save_books'
 
 class App
   attr_accessor :books, :labels
@@ -8,7 +8,7 @@ class App
   def initialize()
     @save = Save.new
     @books = @save.read_books
-    @labels = []
+    @labels = @save.read_labels
   end
 
   OPTIONS = {
@@ -37,6 +37,7 @@ class App
         puts "Genre: #{book.genre} | Author: #{book.author} | Source: #{book.source} | Label: #{book.label} | Publish Date: #{book.publish_date} | Publisher: #{book.publisher}"
       end
     end
+
   end
 
   def list_all_music_albums
@@ -91,9 +92,9 @@ class App
     puts 'Add book cover state'
     cover_state = gets.chomp
 
-    if %w[Y y].include?(archived)
-      archived_value = true
-    elsif %w[N n].include?(archived)
+    if archived == "Y" || archived == "y"
+      archived_value = true 
+    elsif archived == "N" || archived == "n"
       archived_value = false
     end
 
@@ -114,6 +115,7 @@ class App
     @books << book
     @labels << colorized_label
     @save.save_books(@books)
+    @save.save_labels(@labels)
     puts 'Book created successfully'
   end
 

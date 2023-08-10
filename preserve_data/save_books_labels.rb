@@ -60,7 +60,6 @@ class Save
       color = label_data['color']
       labels_list << Label.new(title, color)
     end
-
     labels_list
   end
 end
