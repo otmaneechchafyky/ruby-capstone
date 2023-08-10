@@ -12,4 +12,8 @@ class Genre
     @items << item unless @items.include?(item)
     item.add_genre(self)
   end
+
+  def to_s
+    "#{@id.to_s.ljust(10)} | #{@name.ljust(25)}"
+  end
 end

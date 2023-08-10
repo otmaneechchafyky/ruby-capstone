@@ -1,6 +1,9 @@
 require 'date'
+require_relative '../modules/data_handler'
 
 class Item
+  include DataHandler
+
   attr_accessor :id, :genre, :author, :source, :label, :publish_date, :archived
   attr_reader :related_items
 
@@ -32,6 +35,19 @@ class Item
 
   def move_to_archive
     @archived = true if can_be_archived?
+  end
+
+  def to_s
+    to_print = [
+      "id: #{@id}",
+      "genre: #{@genre&.name}",
+      "author: #{@author}",
+      "source: #{@source}",
+      "label: #{@label}",
+      "publish date: #{@publish_date}",
+      "archived: #{yes_no(@archived)}"
+    ]
+    to_print.join(' | ')
   end
 
   private

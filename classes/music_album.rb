@@ -8,6 +8,10 @@ class MusicAlbum < Item
     @on_spotify = params[:on_spotify]
   end
 
+  def to_s
+    "#{super} | On Spotify: #{yes_no(@on_spotify)}"
+  end
+
   private
 
   def can_be_archived?
