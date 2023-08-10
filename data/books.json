@@ -149,6 +149,36 @@
       "archived": true,
       "publisher": "&é&é&é",
       "cover state": "&é&é&é"
+    },
+    {
+      "author": "ahaha",
+      "genre": "ahaha",
+      "source": "ahaha",
+      "label": "ahahaha",
+      "publish date": "2004-09-09",
+      "archived": false,
+      "publisher": "hhahaha",
+      "cover state": "ahaha"
+    },
+    {
+      "author": "okok",
+      "genre": "oko",
+      "source": "okok",
+      "label": "okok",
+      "publish date": "2000-01-01",
+      "archived": false,
+      "publisher": "frf",
+      "cover state": "frf"
+    },
+    {
+      "author": "ojo",
+      "genre": "ojo",
+      "source": "ojo",
+      "label": "ojo",
+      "publish date": "1999-01-01",
+      "archived": false,
+      "publisher": "ojo",
+      "cover state": "ojo"
     }
   ]
 }

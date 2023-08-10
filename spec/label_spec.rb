@@ -3,7 +3,7 @@ require_relative '../classes/item'
 
 describe Label do
   before(:each) do
-    @my_label = Label.new('title 1')
+    @my_label = Label.new('title 1', 'green')
     @my_item = Item.new(
       genre: 'Science Fiction',
       author: 'Luis',
@@ -17,6 +17,9 @@ describe Label do
   describe 'Check properties' do
     it 'should have correct title' do
       expect(@my_label.title).to eq('title 1')
+    end
+    it 'should have correct color' do
+      expect(@my_label.color).to eq('green')
     end
   end
 

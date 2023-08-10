@@ -1,6 +1,6 @@
 require_relative 'book'
 require_relative 'label'
-require_relative '../preserve_data/save_books'
+require_relative '../preserve_data/save_books_labels'
 
 class App
   attr_accessor :books, :labels
@@ -37,7 +37,6 @@ class App
         puts "Genre: #{book.genre} | Author: #{book.author} | Source: #{book.source} | Label: #{book.label} | Publish Date: #{book.publish_date} | Publisher: #{book.publisher}"
       end
     end
-
   end
 
   def list_all_music_albums
@@ -92,9 +91,9 @@ class App
     puts 'Add book cover state'
     cover_state = gets.chomp
 
-    if archived == "Y" || archived == "y"
-      archived_value = true 
-    elsif archived == "N" || archived == "n"
+    if %w[Y y].include?(archived)
+      archived_value = true
+    elsif %w[N n].include?(archived)
       archived_value = false
     end
 

@@ -43,7 +43,7 @@ class Save
     File.write('./data/labels.json', JSON.pretty_generate({ 'labels' => labels.map do |label|
       {
         'title' => label.title,
-        'genre' => label.color
+        'color' => label.color
       }
     end }))
   end
