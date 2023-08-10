@@ -1,4 +1,10 @@
+require_relative '../handlers/collections/genres'
+require_relative '../handlers/collections/music_albums'
+require_relative '../modules/data_handler'
+
 class App
+  include DataHandler
+
   OPTIONS = {
     '1' => :list_all_books,
     '2' => :list_all_music_albums,
@@ -13,6 +19,11 @@ class App
     '11' => :add_a_game
   }.freeze
 
+  def initialize
+    @genres = Genres.new
+    @albums = MusicAlbums.new
+  end
+
   def run(option)
     send(OPTIONS[option])
   end
@@ -22,7 +33,7 @@ class App
   end
 
   def list_all_music_albums
-    puts 'List of music albums'
+    @albums.list_all
   end
 
   def list_all_movies
@@ -34,7 +45,7 @@ class App
   end
 
   def list_all_genres
-    puts 'List of genres'
+    @genres.list_all
   end
 
   def list_all_labels
@@ -54,7 +65,11 @@ class App
   end
 
   def add_a_music_album
-    puts 'Add a new music album'
+    print_title('Adding a MusicAlbum')
+    puts "What 'Genre' the album is?"
+    genre = @genres.create_new
+    album_params = { genre: genre }
+    @albums.create_new(album_params)
   end
 
   def add_a_game
