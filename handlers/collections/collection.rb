@@ -38,7 +38,6 @@ class Collection
       matches = params.keys.map do |key|
         next unless elem.respond_to?(key)
 
-        p elem.send(key)
         elem.send(key).eql?(params[key])
       end
       matches.all?
