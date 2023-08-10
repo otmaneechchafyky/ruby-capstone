@@ -1,9 +1,9 @@
 require_relative '../handlers/collections/genres'
 require_relative '../handlers/collections/music_albums'
-require_relative '../modules/data_handler'
+require_relative '../modules/user_interface'
 
 class App
-  include DataHandler
+  include UserInterface
 
   OPTIONS = {
     '1' => :list_all_books,
@@ -20,8 +20,9 @@ class App
   }.freeze
 
   def initialize
-    @genres = Genres.new
-    @albums = MusicAlbums.new
+    @genres = Genres.new(filename: 'genres.json')
+    dependencies = { genres: @genres, authors: nil, sources: nil, labels: nil }
+    @albums = MusicAlbums.new(filename: 'albums.json', dependencies: dependencies)
   end
 
   def run(option)
@@ -74,5 +75,11 @@ class App
 
   def add_a_game
     puts 'Add a new game'
+  end
+
+  def save
+    instance_variables.each do |col|
+      instance_variable_get(col).save if instance_variable_get(col).methods.include?(:save)
+    end
   end
 end
