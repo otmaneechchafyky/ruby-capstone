@@ -1,4 +1,4 @@
-module DataHandler
+module UserInterface
   SIMPLE_LINE = { char: '-', num: 30 }.freeze
   DOUBLE_LINE = { char: '=', num: 30 }.freeze
 
@@ -8,9 +8,26 @@ module DataHandler
     gets.chomp.strip.capitalize
   end
 
-  def say_nothing_to_list(type)
+  def say_saving(type, file)
+    puts "💾 Saving [#{type}] data into '#{file}'..."
+    pause_by(1)
+  end
+
+  def say_saved(file)
+    puts "✅ Saving '#{file}' was completed."
     puts "\n"
-    puts "🛑 There are no [#{type}] to list."
+    pause_by(0.5)
+  end
+
+  def say_missing(elem, type)
+    puts "\n"
+    puts "🛑 Missing <#{elem}> to create a [#{type}]."
+    false
+  end
+
+  def say_nothing_to(type, action)
+    puts "\n"
+    puts "🛑 There are no [#{type}] to #{action}."
     false
   end
 
