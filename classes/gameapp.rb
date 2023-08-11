@@ -52,11 +52,9 @@ class GameApp
     puts "Error saving data to file: #{e.message}"
   end
 
-  def add_author(authors)
-    print 'Enter author First Name: '
-    first_name = gets.chomp
-    print 'Enter author Last Name: '
-    last_name = gets.chomp
+  def add_author(authors, full_params)
+    first_name = full_params[:first_name]
+    last_name = full_params[:last_name]
 
     existing_author = find_existing_author(authors, first_name, last_name)
     if existing_author
@@ -71,15 +69,8 @@ class GameApp
   end
 
   # Add games
-  def add_game(games)
-    print 'Is the game multiplayer? (true/false): '
-    multiplayer = gets.chomp.downcase == 'true'
-    print 'Enter the last played date (YYYY-MM-DD): '
-    last_played_date = Date.parse(gets.chomp)
-    game = Game.new(
-      multiplayer: multiplayer,
-      played_at_date: last_played_date
-    )
+  def add_game(games, full_params)
+    game = Game.new(full_params)
     games << game
     puts 'Game Added Successfully.'
     game

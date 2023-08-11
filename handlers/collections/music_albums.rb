@@ -15,13 +15,12 @@ class MusicAlbums < Collection
     super(params)
   end
 
-  def create_new(params)
-    return say_missing('genre', 'MusicAlbum') unless params[:genre]
+  def create_new(full_params)
+    full_params = create_params unless full_params[:publish_date]
 
     say_creating('MusicAlbum')
-    new_album = MusicAlbum.new(create_params)
+    new_album = MusicAlbum.new(full_params)
     @collection << new_album
-    params[:genre].add_item(new_album)
     say_created('MusicAlbum')
     new_album
   end

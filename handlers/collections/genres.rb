@@ -11,8 +11,9 @@ class Genres < Collection
     super(params)
   end
 
-  def create_new
-    params = create_params
+  def create_new(full_params)
+    full_params = create_params unless full_params[:name]
+    params = { name: full_params[:name] }
     genre = already_has(params)
 
     if genre
@@ -21,9 +22,9 @@ class Genres < Collection
     end
 
     say_creating('Genre')
-    genre = Genre.new(params)
+    genre = Genre.new(full_params)
     @collection << genre
-    say_created('Genre', params[:name])
+    say_created('Genre', full_params[:name])
     genre
   end
 

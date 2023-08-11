@@ -199,6 +199,16 @@
       "archived": false,
       "publisher": "team",
       "cover state": "good"
+    },
+    {
+      "author": "#<Author:0x00007fa2165af608>",
+      "genre": {"id":393,"name":"Suspense"},
+      "source": null,
+      "label": "#<Label:0x00007fa2165afba8>",
+      "publish date": "2023-08-10",
+      "archived": false,
+      "publisher": "Me",
+      "cover state": "Good"
     }
   ]
 }
