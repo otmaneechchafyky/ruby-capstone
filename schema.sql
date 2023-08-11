@@ -19,3 +19,10 @@ CREATE TABLE books (
   item_id INT,
   FOREIGN KEY (item_id) REFERENCES items(id)
 );
+
+-- Create the 'labels' table
+CREATE TABLE labels (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255),
+  color VARCHAR(255)
+);
