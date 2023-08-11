@@ -10,3 +10,12 @@ CREATE TABLE items (
   publish_date DATE,
   archived BOOLEAN
 );
+
+-- Create the 'books' table
+CREATE TABLE books (
+  id SERIAL PRIMARY KEY,
+  publisher VARCHAR(255),
+  cover_state VARCHAR(255),
+  item_id INT,
+  FOREIGN KEY (item_id) REFERENCES items(id)
+);
