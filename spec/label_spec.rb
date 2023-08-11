@@ -3,7 +3,7 @@ require_relative '../classes/item'
 
 describe Label do
   before(:each) do
-    @my_label = Label.new('title 1', 'green')
+    @my_label = Label.new(title: 'title 1', color: 'green')
     @my_item = Item.new(
       genre: 'Science Fiction',
       author: 'Luis',
