@@ -1,8 +1,11 @@
 require 'date'
+require_relative '../modules/user_interface'
 
 class Item
-  attr_accessor :genre, :author, :source, :label, :publish_date, :archived
-  attr_reader :id, :related_items
+  include UserInterface
+
+  attr_accessor :publish_date
+  attr_reader :id, :archived, :genre, :author, :source, :label
 
   def initialize(params)
     @id = params[:id] || rand(1..100_000)
@@ -28,11 +31,34 @@ class Item
 
   def add_label(label)
     @label = label
-    label.add_item(self)
   end
 
   def move_to_archive
     @archived = true if can_be_archived?
+  end
+
+  def to_s
+    [
+      "id: #{@id}",
+      "genre: #{@genre&.name}",
+      "author: #{@author&.first_name} #{@author&.last_name}",
+      "source: #{@source&.name}",
+      "label: #{@label&.title}",
+      "publish date: #{@publish_date}",
+      "archived: #{yes_no(@archived)}"
+    ].join(' | ')
+  end
+
+  def to_hash(*_args)
+    {
+      id: @id,
+      genre_id: @genre&.id,
+      author_id: @author&.id,
+      source_id: @source&.id,
+      label_id: @label&.id,
+      publish_date: @publish_date,
+      archived: @archived
+    }
   end
 
   private

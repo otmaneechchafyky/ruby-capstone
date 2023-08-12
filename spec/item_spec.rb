@@ -1,5 +1,6 @@
 # item unit test
 require_relative '../classes/item'
+
 describe Item do
   before(:each) do
     params = {

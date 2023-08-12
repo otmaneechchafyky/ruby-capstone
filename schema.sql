@@ -14,31 +14,58 @@ CREATE TABLE labels (
   color VARCHAR(255)
 );
 
--- Create the 'items' table
-CREATE TABLE items (
+-- Create the 'genres' table
+CREATE TABLE genres (
   id SERIAL PRIMARY KEY,
-  genre VARCHAR(255),
-  author VARCHAR(255),
-  source VARCHAR(255),
-  label VARCHAR(255),
-  publish_date DATE,
-  archived BOOLEAN
+  name VARCHAR(255)
 );
 
 -- Create the 'books' table
 CREATE TABLE books (
   id SERIAL PRIMARY KEY,
+  publish_date DATE,
+  archived BOOLEAN
   publisher VARCHAR(255),
   cover_state VARCHAR(255),
-  item_id INT,
-  FOREIGN KEY (item_id) REFERENCES items(id)
+  genre_id INT NOT NULL,
+  author_id INT NOT NULL,
+  source_id INT NOT NULL,
+  label_id INT NOT NULL,
+  FOREIGN KEY (genre_id) REFERENCES genres(id),
+  FOREIGN KEY (author_id) REFERENCES authors(id),
+  FOREIGN KEY (source_id) REFERENCES sources(id),
+  FOREIGN KEY (label_id) REFERENCES labels(id)
 );
 
 -- Create the 'games' table
 CREATE TABLE games (
   id SERIAL PRIMARY KEY,
+  publish_date DATE,
+  archived BOOLEAN
   multiplayer BOOLEAN,
   played_at_date DATE,
-  item_id INT,
-  FOREIGN KEY (item_id) REFERENCES items(id)
+  genre_id INT NOT NULL,
+  author_id INT NOT NULL,
+  source_id INT NOT NULL,
+  label_id INT NOT NULL,
+  FOREIGN KEY (genre_id) REFERENCES genres(id),
+  FOREIGN KEY (author_id) REFERENCES authors(id),
+  FOREIGN KEY (source_id) REFERENCES sources(id),
+  FOREIGN KEY (label_id) REFERENCES labels(id)
+);
+
+-- Create the 'music_albums' table
+CREATE TABLE music_albums (
+  id SERIAL PRIMARY KEY,
+  publish_date DATE,
+  archived BOOLEAN
+  on_spotify BOOLEAN NOT NULL,
+  genre_id INT NOT NULL,
+  author_id INT NOT NULL,
+  source_id INT NOT NULL,
+  label_id INT NOT NULL,
+  FOREIGN KEY (genre_id) REFERENCES genres(id),
+  FOREIGN KEY (author_id) REFERENCES authors(id),
+  FOREIGN KEY (source_id) REFERENCES sources(id),
+  FOREIGN KEY (label_id) REFERENCES labels(id)
 );
