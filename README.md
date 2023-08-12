@@ -13,6 +13,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+    - [💻 Demo video](#demo-video)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -55,6 +56,16 @@
 
 - **[Create Classes]**
 - **[Use inheritance]**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Demo -->
+
+### Video demo <a name="demo-video"></a>
+
+Here is the link to the video demo :
+
+<a href="https://drive.google.com/file/d/1Cdrfm7kpV1fGama3iv8YUwyKgygOVJ-W/view?usp=sharing">Video demo</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
