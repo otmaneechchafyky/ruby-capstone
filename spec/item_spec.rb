@@ -1,10 +1,8 @@
 # item unit test
-require_relative '../item'
-
+require_relative '../classes/item'
 describe Item do
   before(:each) do
     params = {
-      id: 1,
       genre: 'to be defined',
       author: 'to be defined',
       source: 'the valid source',

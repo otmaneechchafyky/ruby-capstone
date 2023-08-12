@@ -1,11 +1,11 @@
 require 'date'
 
 class Item
-  attr_accessor :id, :genre, :author, :source, :label, :publish_date, :archived
-  attr_reader :related_items
+  attr_accessor :genre, :author, :source, :label, :publish_date, :archived
+  attr_reader :id, :related_items
 
   def initialize(params)
-    @id = params[:id]
+    @id = rand(1..100_000)
     @genre = params[:genre]
     @author = params[:author]
     @source = params[:source]
@@ -28,6 +28,7 @@ class Item
 
   def add_label(label)
     @label = label
+    label.add_item(self)
   end
 
   def move_to_archive
