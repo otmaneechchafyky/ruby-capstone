@@ -11,6 +11,10 @@
     {
       "title": "ojo",
       "color": "ojo"
+    },
+    {
+      "title": "deadline",
+      "color": "red"
     }
   ]
 }

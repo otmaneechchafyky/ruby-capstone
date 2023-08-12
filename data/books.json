@@ -179,6 +179,16 @@
       "archived": false,
       "publisher": "ojo",
       "cover state": "ojo"
+    },
+    {
+      "author": "microverse",
+      "genre": "capstone",
+      "source": "imagination",
+      "label": "deadline",
+      "publish date": "2023-08-12",
+      "archived": false,
+      "publisher": "team",
+      "cover state": "good"
     }
   ]
 }

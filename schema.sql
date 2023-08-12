@@ -1,5 +1,19 @@
 --Create a schema.sql file with tables that will be analogical to the structure of the classes that we created
 
+-- Create the 'authors' table
+CREATE TABLE authors (
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(255),
+  last_name VARCHAR(255)
+);
+
+-- Create the 'labels' table
+CREATE TABLE labels (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255),
+  color VARCHAR(255)
+);
+
 -- Create the 'items' table
 CREATE TABLE items (
   id SERIAL PRIMARY KEY,
@@ -20,9 +34,11 @@ CREATE TABLE books (
   FOREIGN KEY (item_id) REFERENCES items(id)
 );
 
--- Create the 'labels' table
-CREATE TABLE labels (
+-- Create the 'games' table
+CREATE TABLE games (
   id SERIAL PRIMARY KEY,
-  title VARCHAR(255),
-  color VARCHAR(255)
+  multiplayer BOOLEAN,
+  played_at_date DATE,
+  item_id INT,
+  FOREIGN KEY (item_id) REFERENCES items(id)
 );

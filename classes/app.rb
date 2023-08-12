@@ -1,14 +1,18 @@
 require_relative 'book'
 require_relative 'label'
 require_relative '../preserve_data/save_books_labels'
+require_relative 'gameapp'
 
 class App
   attr_accessor :books, :labels
 
-  def initialize()
+  def initialize
     @save = Save.new
     @books = @save.read_books
     @labels = @save.read_labels
+    @gameapp = GameApp.new
+    @authors = @gameapp.load_authors
+    @games = @gameapp.load_games
   end
 
   OPTIONS = {
@@ -48,7 +52,7 @@ class App
   end
 
   def list_all_games
-    puts 'List of games'
+    @gameapp.list_all_games(@games)
   end
 
   def list_all_genres
@@ -66,7 +70,7 @@ class App
   end
 
   def list_all_authors
-    puts 'List of authors'
+    @gameapp.list_all_authors(@authors)
   end
 
   def list_all_sources
@@ -123,6 +127,10 @@ class App
   end
 
   def add_a_game
-    puts 'Add a new game'
+    author = @gameapp.add_author(@authors)
+    game = @gameapp.add_game(@games)
+    author.add_item(game)
+    @gameapp.save_authors(@authors)
+    @gameapp.save_games(@games)
   end
 end
