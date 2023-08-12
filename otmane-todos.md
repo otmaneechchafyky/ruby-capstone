@@ -1,0 +1,23 @@
+### Team member #1
+- Create a Book class in a separate .rb file.
+- Create a Label class with an association to the Item class (in a separate .rb file).
+- All Book class properties visible in the diagram should be defined and set up in the constructor method.
+- All Label class properties visible in the diagram should be defined and set up in the constructor method.
+- Implement methods:
+    - add_item method in the Label class
+        - should take an instance of the Item class as an input
+        - should add the input item to the collection of items
+        - should add self as a property of the item object (by using the correct setter from the item object)
+    - can_be_archived?() in the Book class
+        - should override the method from the parent class
+        - should return true if parent's method returns true OR if cover_state equals to "bad"
+        - otherwise, it should return false
+- Add unit tests for all implemented methods.
+- The following options should be available:
+    - List all books
+    - List all labels (e.g. 'Gift', 'New')
+    - Add a book
+- All data should be preserved by saving collections in .json files.
+- Create a schema.sql file with tables that will be analogical to the structure of the classes that you created:
+    - books table (add all properties and associations from the parent Item class as table columns)
+    - labels table
