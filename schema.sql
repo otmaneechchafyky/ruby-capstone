@@ -14,10 +14,18 @@ CREATE TABLE items (
 -- Create the 'books' table
 CREATE TABLE books (
   id SERIAL PRIMARY KEY,
+  genre_id INT NOT NULL,
+  author_id INT NOT NULL,
+  source_id INT NOT NULL,
+  label_id INT NOT NULL,
+  publish_date DATE NOT NULL,
+  archived BOOLEAN,
   publisher VARCHAR(255),
   cover_state VARCHAR(255),
-  item_id INT,
-  FOREIGN KEY (item_id) REFERENCES items(id)
+  FOREIGN KEY (label_id) REFERENCES labels(id)
+  FOREIGN KEY (genre_id) REFERENCES genres(id),
+  FOREIGN KEY (author_id) REFERENCES authors(id),
+  FOREIGN KEY (source_id) REFERENCES sources(id),
 );
 
 -- Create the 'labels' table
